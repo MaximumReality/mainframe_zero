@@ -3,35 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAINFRAME_ZERO | Maximum Reality</title>
+    <title>MAINFRAME_ZERO | Azul's Quantum Lab</title>
     <style>
-        :root { --neon-green: #32cd32; --neon-blue: #00e5ff; --neon-red: #ff0000; --bg-black: #050505; }
-        body { background: var(--bg-black); color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding-bottom: 50px; overflow-x: hidden; }
+        :root { --neon-blue: #00e5ff; --bg-black: #050505; --data-blue: rgba(0, 229, 255, 0.1); }
+        body { background: var(--bg-black); color: #fff; font-family: 'Courier New', monospace; margin: 0; padding-bottom: 50px; overflow-x: hidden; }
         
-        /* HEADER & STATUS */
-        header { position: sticky; top: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); padding: 15px; border-bottom: 1px solid #333; z-index: 100; text-align: center; }
-        .home-btn { color: var(--neon-green); text-decoration: none; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; }
-        .status-bar { background: #111; padding: 5px 15px; display: flex; justify-content: space-between; font-family: monospace; font-size: 0.6rem; color: #666; border-bottom: 1px solid #222; }
+        /* HEADER */
+        header { position: sticky; top: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); padding: 15px; border-bottom: 1px solid var(--neon-blue); z-index: 100; text-align: center; }
+        .home-btn { color: var(--neon-blue); text-decoration: none; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
         
+        .status-bar { background: #0a0a0a; padding: 5px 15px; display: flex; justify-content: space-between; font-size: 0.6rem; color: var(--neon-blue); border-bottom: 1px solid #111; opacity: 0.8; }
+
         /* SEARCH */
         .search-container { padding: 15px; }
-        #vaultSearch { width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: var(--neon-green); border-radius: 8px; font-family: monospace; box-sizing: border-box; }
+        #vaultSearch { width: 100%; padding: 12px; background: #111; border: 1px solid #222; color: var(--neon-blue); border-radius: 4px; font-family: monospace; box-sizing: border-box; outline: none; }
+        #vaultSearch:focus { border-color: var(--neon-blue); box-shadow: 0 0 10px var(--data-blue); }
 
-        /* ACCORDION */
-        .cat-header { background: #111; color: #fff; cursor: pointer; padding: 18px; width: 100%; border: none; text-align: left; outline: none; font-size: 0.9rem; font-weight: bold; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
-        .cat-header.active { background: #1a1a1a; color: var(--neon-green); }
-        .cat-header.azul { color: var(--neon-blue); }
+        /* AZUL ACCORDION */
+        .cat-header { background: #0a0a0a; color: var(--neon-blue); cursor: pointer; padding: 20px; width: 100%; border: none; text-align: left; outline: none; font-size: 0.8rem; font-weight: bold; border-bottom: 1px solid #111; display: flex; justify-content: space-between; align-items: center; letter-spacing: 1px; }
+        .cat-header:active { background: #111; }
         .arrow { font-size: 0.7rem; transition: transform 0.3s; }
         .active .arrow { transform: rotate(180deg); }
 
-        .link-panel { background: #000; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-        .recipe-entry { padding: 15px 25px; text-decoration: none; color: #ccc; display: flex; align-items: center; border-bottom: 1px solid #111; font-size: 0.85rem; }
-        .recipe-entry span { margin-right: 15px; font-size: 1.1rem; }
-        .recipe-entry:active { background: #111; color: #fff; }
+        .link-panel { background: #000; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; border-left: 2px solid var(--neon-blue); margin-left: 5px; }
+        .data-entry { padding: 15px 25px; text-decoration: none; color: #888; display: flex; align-items: center; border-bottom: 1px solid #111; font-size: 0.75rem; transition: 0.2s; }
+        .data-entry span { margin-right: 15px; color: var(--neon-blue); }
+        .data-entry:active { background: var(--data-blue); color: #fff; }
 
-        /* CHAOS POPUP */
-        #chaosOverlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:9999; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; font-family:monospace; box-sizing: border-box; border: 4px solid var(--neon-red); }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+        .category-tag { padding: 8px 25px; font-size: 0.55rem; color: var(--neon-blue); opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; background: #050505; }
     </style>
 </head>
 <body>
@@ -41,67 +40,61 @@
     </header>
 
     <div class="status-bar">
-        <span>SYS: ONLINE</span>
-        <span>LOC: THE_VAULT</span>
+        <span>LOGIN: DR_AZUL_PHD</span>
+        <span>ENCRYPTION: QUANTUM_ENABLED</span>
     </div>
 
     <div class="search-container">
-        <input type="text" id="vaultSearch" onkeyup="searchVault()" placeholder="SEARCH_DATABASE...">
+        <input type="text" id="vaultSearch" onkeyup="searchVault()" placeholder="SEARCH_QUANTUM_RECORDS...">
     </div>
 
-    <section class="recipe-section">
-        <button class="cat-header"> [ 01 ] MAIN_COURSES <span class="arrow">▼</span></button>
+    <section class="lab-section">
+        <button class="cat-header"> [ 01 ] QUANTUM_FLUX <span class="arrow">▼</span></button>
         <div class="link-panel">
-            <a href="monkey-meat.html" class="recipe-entry"><span>🐒</span> Mochkil's "Monkey Meat"</a>
-            <a href="salmon-nuggets.html" class="recipe-entry"><span>🍣</span> Miso Salmon Nuggets</a>
-            <a href="clucking-good.html" class="recipe-entry"><span>🍗</span> Clucking Good Roast Chicken</a>
-            <a href="javascript:void(0)" onclick="triggerChaosWarning()" class="recipe-entry" style="color:var(--neon-red); font-weight:bold;"><span>☢️</span> THE CHAOS JAR</a>
+            <div class="category-tag">Multiverse Anomalies</div>
+            <a href="quantum-catnip.html" class="data-entry"><span>⚛️</span> Catnip Superposition Theory</a>
+            <a href="void-whisker.html" class="data-entry"><span>🕳️</span> Whisker-to-Void Communication</a>
         </div>
 
-        <button class="cat-header"> [ 04 ] DESSERT_ARCHIVE <span class="arrow">▼</span></button>
+        <button class="cat-header"> [ 02 ] CYBER_ENHANCEMENTS <span class="arrow">▼</span></button>
         <div class="link-panel">
-            <a href="galaxy-puffs.html" class="recipe-entry"><span>🌌</span> Galaxy Puff Cookie Tower</a>
+            <div class="category-tag">Hacking Protocols</div>
+            <a href="kitchen-firewall.html" class="data-entry"><span>💾</span> Bypassing Kitchen Firewalls v4.0</a>
+            <a href="neural-purr.html" class="data-entry"><span>🧠</span> Neural Purr-Frequency Modulation</a>
         </div>
 
-        <button class="cat-header azul"> [ 06 ] QUANTUM_LAB <span class="arrow">▼</span></button>
+        <button class="cat-header"> [ 03 ] FELINE_PHYSICS <span class="arrow">▼</span></button>
         <div class="link-panel">
-            <div style="padding: 10px 15px; font-size: 0.6rem; color: var(--neon-blue); opacity: 0.6; border-bottom: 1px solid #111;">> CATEGORY: QUANTUM_FLUX</div>
-            <a href="quantum-catnip.html" class="recipe-entry"><span>⚛️</span> Quantum Coherence in Catnip Molecules</a>
-            
-            <div style="padding: 10px 15px; font-size: 0.6rem; color: var(--neon-blue); opacity: 0.6; border-bottom: 1px solid #111; border-top: 1px solid #111;">> CATEGORY: CYBERNETIC_ENHANCEMENTS</div>
-            <a href="kitchen-firewall.html" class="recipe-entry"><span>💾</span> Bypassing Kitchen Firewalls v4.0</a>
+            <div class="category-tag">Biomechanical Studies</div>
+            <a href="pounce-trajectory.html" class="data-entry"><span>🐾</span> Entanglement of the Red Dot</a>
+            <a href="medical-logs.html" class="data-entry"><span>🏥</span> Sphynx Dermal Integrity Logs</a>
         </div>
     </section>
 
-    <div id="chaosOverlay">
-        <div style="color: var(--neon-red); font-size: 3rem; margin-bottom: 20px; animation: blink 0.2s infinite;">⚠️</div>
-        <h2 style="color: var(--neon-red); margin-bottom: 15px;">CRITICAL_DATA_CORRUPTION</h2>
-        <p style="color: #fff; font-size: 0.9rem; max-width: 300px; margin-bottom: 30px;">This file contains high-density flavor anomalies (Pickles + Whipped Cream). Accept risk?</p>
-        <div style="display:flex; gap: 20px;">
-            <button onclick="abortChaos()" style="background:#222; color:#fff; border:1px solid #fff; padding:10px 20px;">ABORT</button>
-            <button onclick="proceedToChaos()" style="background:var(--neon-red); color:#000; border:none; padding:10px 20px; font-weight:bold;">I_ACCEPT</button>
-        </div>
-    </div>
-
     <script>
-        // SEARCH LOGIC
         function searchVault() {
             let input = document.getElementById('vaultSearch').value.toLowerCase();
-            let entries = document.getElementsByClassName('recipe-entry');
+            let entries = document.getElementsByClassName('data-entry');
             let headers = document.getElementsByClassName('cat-header');
+            
             for (let entry of entries) {
                 entry.style.display = entry.innerText.toLowerCase().includes(input) ? "flex" : "none";
             }
+            
             for (let header of headers) {
                 let panel = header.nextElementSibling;
-                let hasVisible = Array.from(panel.getElementsByClassName('recipe-entry')).some(e => e.style.display !== "none");
+                let hasVisible = Array.from(panel.getElementsByClassName('data-entry')).some(e => e.style.display !== "none");
                 header.style.display = (input === "" || hasVisible) ? "flex" : "none";
-                if (input !== "" && hasVisible) { header.classList.add("active"); panel.style.maxHeight = panel.scrollHeight + "px"; }
-                else if (input === "") { header.classList.remove("active"); panel.style.maxHeight = null; }
+                if (input !== "" && hasVisible) { 
+                    header.classList.add("active"); 
+                    panel.style.maxHeight = panel.scrollHeight + "px"; 
+                } else if (input === "") { 
+                    header.classList.remove("active"); 
+                    panel.style.maxHeight = null; 
+                }
             }
         }
 
-        // ACCORDION LOGIC
         var acc = document.getElementsByClassName("cat-header");
         for (var i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function() {
@@ -110,11 +103,6 @@
                 panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
             });
         }
-
-        // CHAOS LOGIC
-        function triggerChaosWarning() { document.getElementById('chaosOverlay').style.display = 'flex'; }
-        function abortChaos() { document.getElementById('chaosOverlay').style.display = 'none'; }
-        function proceedToChaos() { window.location.href = "chaos-jar.html"; }
     </script>
 
 </body>
