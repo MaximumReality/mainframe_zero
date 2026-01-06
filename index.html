@@ -5,50 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAINFRAME_ZERO | Azul's Quantum Lab</title>
     <style>
-        :root { --neon-blue: #00e5ff; --bg-black: #050505; --data-blue: rgba(0, 229, 255, 0.1); }
-        body { background: var(--bg-black); color: #fff; font-family: 'Courier New', monospace; margin: 0; padding-bottom: 50px; overflow-x: hidden; }
+        :root { --neon-blue: #00e5ff; --neon-red: #ff0000; --bg-black: #050505; }
+        body { background: var(--bg-black); color: #fff; font-family: 'Courier New', monospace; margin: 0; padding-bottom: 50px; overflow: hidden; height: 100vh; }
         
         /* THE SCAN LINE */
-        .scanline { 
-            width: 100%; 
-            height: 4px; 
-            background: rgba(0, 229, 255, 0.2); 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            z-index: 9999; 
-            pointer-events: none; /* Allows you to click "through" the line */
-            box-shadow: 0 0 10px var(--neon-blue);
-            animation: scan 4s linear infinite; 
-        }
-        @keyframes scan { 
-            0% { top: -10px; } 
-            100% { top: 100%; } 
-        }
+        .scanline { width: 100%; height: 4px; background: rgba(0, 229, 255, 0.2); position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; box-shadow: 0 0 10px var(--neon-blue); animation: scan 4s linear infinite; }
+        @keyframes scan { 0% { top: -10px; } 100% { top: 100%; } }
 
-        /* HEADER & STATUS */
+        /* GLITCH STATE MODIFIERS */
+        body.glitch-mode .scanline { background: rgba(255, 0, 0, 0.8); box-shadow: 0 0 20px var(--neon-red); animation-duration: 0.5s; }
+        body.glitch-mode .home-btn, body.glitch-mode .cat-header { color: var(--neon-red); text-shadow: 2px 2px #550000; }
+        
         header { position: sticky; top: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); padding: 15px; border-bottom: 1px solid var(--neon-blue); z-index: 100; text-align: center; }
-        .home-btn { color: var(--neon-blue); text-decoration: none; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
-        .status-bar { background: #0a0a0a; padding: 5px 15px; display: flex; justify-content: space-between; font-size: 0.6rem; color: var(--neon-blue); border-bottom: 1px solid #111; opacity: 0.8; }
+        .home-btn { color: var(--neon-blue); text-decoration: none; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; }
+        
+        .status-bar { background: #0a0a0a; padding: 5px 15px; display: flex; justify-content: space-between; font-size: 0.6rem; color: var(--neon-blue); border-bottom: 1px solid #111; align-items: center; }
+        .leak-btn { background: var(--neon-red); color: #000; padding: 2px 6px; font-weight: bold; cursor: pointer; border: none; font-size: 0.5rem; }
 
-        /* SEARCH BAR */
         .search-container { padding: 15px; position: relative; z-index: 10; }
         #vaultSearch { width: 100%; padding: 12px; background: #111; border: 1px solid #222; color: var(--neon-blue); border-radius: 4px; font-family: monospace; box-sizing: border-box; outline: none; }
 
-        /* ACCORDION DESIGN */
-        .cat-header { background: #0a0a0a; color: var(--neon-blue); cursor: pointer; padding: 20px; width: 100%; border: none; text-align: left; outline: none; font-size: 0.8rem; font-weight: bold; border-bottom: 1px solid #111; display: flex; justify-content: space-between; align-items: center; letter-spacing: 1px; position: relative; z-index: 10; }
-        .active .arrow { transform: rotate(180deg); }
-        .arrow { font-size: 0.7rem; transition: transform 0.3s; }
-
+        .lab-section { height: calc(100vh - 150px); overflow-y: auto; }
+        .cat-header { background: #0a0a0a; color: var(--neon-blue); cursor: pointer; padding: 20px; width: 100%; border: none; text-align: left; font-size: 0.8rem; font-weight: bold; border-bottom: 1px solid #111; display: flex; justify-content: space-between; position: relative; z-index: 10; }
+        
         .link-panel { background: #000; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; border-left: 2px solid var(--neon-blue); margin-left: 5px; }
         .data-entry { padding: 15px 25px; text-decoration: none; color: #888; display: flex; align-items: center; border-bottom: 1px solid #111; font-size: 0.75rem; }
         .data-entry span { margin-right: 15px; color: var(--neon-blue); }
-        .category-tag { padding: 8px 25px; font-size: 0.55rem; color: var(--neon-blue); opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* RAINING TEXT EFFECT */
+        #glitchCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; display: none; }
     </style>
 </head>
 <body>
 
     <div class="scanline"></div>
+    <canvas id="glitchCanvas"></canvas>
 
     <header>
         <a href="https://maximumreality.xyz" class="home-btn">📡 UPLINK: MAINFRAME_ZERO</a>
@@ -56,7 +47,7 @@
 
     <div class="status-bar">
         <span>USER: DR_AZUL_PHD</span>
-        <span>ACCESS: ROOT</span>
+        <button class="leak-btn" onclick="startGlitch()">[ ! ] INITIATE_LEAK</button>
     </div>
 
     <div class="search-container">
@@ -66,25 +57,52 @@
     <section class="lab-section">
         <button class="cat-header"> [ 01 ] QUANTUM_FLUX <span class="arrow">▼</span></button>
         <div class="link-panel">
-            <div class="category-tag">Multiverse Anomalies</div>
             <a href="quantum-catnip.html" class="data-entry"><span>⚛️</span> Catnip Superposition Theory</a>
         </div>
 
         <button class="cat-header"> [ 02 ] CYBERNETICS <span class="arrow">▼</span></button>
         <div class="link-panel">
-            <div class="category-tag">Hacking Protocols</div>
             <a href="kitchen-firewall.html" class="data-entry"><span>💾</span> Bypassing Kitchen Firewalls v4.0</a>
         </div>
 
         <button class="cat-header"> [ 03 ] FELINE_PHYSICS <span class="arrow">▼</span></button>
         <div class="link-panel">
-            <div class="category-tag">Medical & Pounce Logs</div>
             <a href="medical-logs.html" class="data-entry"><span>🏥</span> Sphynx Skin Integrity Log</a>
             <a href="pounce-trajectory.html" class="data-entry"><span>🐾</span> Red Dot Entanglement</a>
         </div>
     </section>
 
     <script>
+        // GLITCH ENGINE
+        const canvas = document.getElementById('glitchCanvas');
+        const ctx = canvas.getContext('2d');
+        let raining = false;
+
+        function startGlitch() {
+            raining = !raining;
+            document.body.classList.toggle('glitch-mode');
+            canvas.style.display = raining ? 'block' : 'none';
+            if(raining) {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                renderGlitch();
+            }
+        }
+
+        function renderGlitch() {
+            if(!raining) return;
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#ff0000';
+            ctx.font = '10px monospace';
+            for(let i = 0; i < 20; i++) {
+                ctx.fillText("ACCESS_DENIED", Math.random() * canvas.width, Math.random() * canvas.height);
+                ctx.fillText("DATA_LEAK", Math.random() * canvas.width, Math.random() * canvas.height);
+            }
+            setTimeout(() => requestAnimationFrame(renderGlitch), 100);
+        }
+
+        // ACCORDION & SEARCH
         function searchVault() {
             let input = document.getElementById('vaultSearch').value.toLowerCase();
             let entries = document.getElementsByClassName('data-entry');
