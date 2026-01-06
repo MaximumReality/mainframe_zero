@@ -8,44 +8,59 @@
         :root { --neon-blue: #00e5ff; --bg-black: #050505; --data-blue: rgba(0, 229, 255, 0.1); }
         body { background: var(--bg-black); color: #fff; font-family: 'Courier New', monospace; margin: 0; padding-bottom: 50px; overflow-x: hidden; }
         
-        /* HEADER */
+        /* THE SCAN LINE */
+        .scanline { 
+            width: 100%; 
+            height: 4px; 
+            background: rgba(0, 229, 255, 0.2); 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 9999; 
+            pointer-events: none; /* Allows you to click "through" the line */
+            box-shadow: 0 0 10px var(--neon-blue);
+            animation: scan 4s linear infinite; 
+        }
+        @keyframes scan { 
+            0% { top: -10px; } 
+            100% { top: 100%; } 
+        }
+
+        /* HEADER & STATUS */
         header { position: sticky; top: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); padding: 15px; border-bottom: 1px solid var(--neon-blue); z-index: 100; text-align: center; }
         .home-btn { color: var(--neon-blue); text-decoration: none; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
-        
         .status-bar { background: #0a0a0a; padding: 5px 15px; display: flex; justify-content: space-between; font-size: 0.6rem; color: var(--neon-blue); border-bottom: 1px solid #111; opacity: 0.8; }
 
-        /* SEARCH */
-        .search-container { padding: 15px; }
+        /* SEARCH BAR */
+        .search-container { padding: 15px; position: relative; z-index: 10; }
         #vaultSearch { width: 100%; padding: 12px; background: #111; border: 1px solid #222; color: var(--neon-blue); border-radius: 4px; font-family: monospace; box-sizing: border-box; outline: none; }
-        #vaultSearch:focus { border-color: var(--neon-blue); box-shadow: 0 0 10px var(--data-blue); }
 
-        /* AZUL ACCORDION */
-        .cat-header { background: #0a0a0a; color: var(--neon-blue); cursor: pointer; padding: 20px; width: 100%; border: none; text-align: left; outline: none; font-size: 0.8rem; font-weight: bold; border-bottom: 1px solid #111; display: flex; justify-content: space-between; align-items: center; letter-spacing: 1px; }
-        .cat-header:active { background: #111; }
-        .arrow { font-size: 0.7rem; transition: transform 0.3s; }
+        /* ACCORDION DESIGN */
+        .cat-header { background: #0a0a0a; color: var(--neon-blue); cursor: pointer; padding: 20px; width: 100%; border: none; text-align: left; outline: none; font-size: 0.8rem; font-weight: bold; border-bottom: 1px solid #111; display: flex; justify-content: space-between; align-items: center; letter-spacing: 1px; position: relative; z-index: 10; }
         .active .arrow { transform: rotate(180deg); }
+        .arrow { font-size: 0.7rem; transition: transform 0.3s; }
 
         .link-panel { background: #000; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; border-left: 2px solid var(--neon-blue); margin-left: 5px; }
-        .data-entry { padding: 15px 25px; text-decoration: none; color: #888; display: flex; align-items: center; border-bottom: 1px solid #111; font-size: 0.75rem; transition: 0.2s; }
+        .data-entry { padding: 15px 25px; text-decoration: none; color: #888; display: flex; align-items: center; border-bottom: 1px solid #111; font-size: 0.75rem; }
         .data-entry span { margin-right: 15px; color: var(--neon-blue); }
-        .data-entry:active { background: var(--data-blue); color: #fff; }
-
-        .category-tag { padding: 8px 25px; font-size: 0.55rem; color: var(--neon-blue); opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; background: #050505; }
+        .category-tag { padding: 8px 25px; font-size: 0.55rem; color: var(--neon-blue); opacity: 0.4; text-transform: uppercase; letter-spacing: 2px; }
     </style>
 </head>
 <body>
+
+    <div class="scanline"></div>
 
     <header>
         <a href="https://maximumreality.xyz" class="home-btn">📡 UPLINK: MAINFRAME_ZERO</a>
     </header>
 
     <div class="status-bar">
-        <span>LOGIN: DR_AZUL_PHD</span>
-        <span>ENCRYPTION: QUANTUM_ENABLED</span>
+        <span>USER: DR_AZUL_PHD</span>
+        <span>ACCESS: ROOT</span>
     </div>
 
     <div class="search-container">
-        <input type="text" id="vaultSearch" onkeyup="searchVault()" placeholder="SEARCH_QUANTUM_RECORDS...">
+        <input type="text" id="vaultSearch" onkeyup="searchVault()" placeholder="SEARCH_QUANTUM_FILES...">
     </div>
 
     <section class="lab-section">
@@ -53,21 +68,19 @@
         <div class="link-panel">
             <div class="category-tag">Multiverse Anomalies</div>
             <a href="quantum-catnip.html" class="data-entry"><span>⚛️</span> Catnip Superposition Theory</a>
-            <a href="void-whisker.html" class="data-entry"><span>🕳️</span> Whisker-to-Void Communication</a>
         </div>
 
-        <button class="cat-header"> [ 02 ] CYBER_ENHANCEMENTS <span class="arrow">▼</span></button>
+        <button class="cat-header"> [ 02 ] CYBERNETICS <span class="arrow">▼</span></button>
         <div class="link-panel">
             <div class="category-tag">Hacking Protocols</div>
             <a href="kitchen-firewall.html" class="data-entry"><span>💾</span> Bypassing Kitchen Firewalls v4.0</a>
-            <a href="neural-purr.html" class="data-entry"><span>🧠</span> Neural Purr-Frequency Modulation</a>
         </div>
 
         <button class="cat-header"> [ 03 ] FELINE_PHYSICS <span class="arrow">▼</span></button>
         <div class="link-panel">
-            <div class="category-tag">Biomechanical Studies</div>
-            <a href="pounce-trajectory.html" class="data-entry"><span>🐾</span> Entanglement of the Red Dot</a>
-            <a href="medical-logs.html" class="data-entry"><span>🏥</span> Sphynx Dermal Integrity Logs</a>
+            <div class="category-tag">Medical & Pounce Logs</div>
+            <a href="medical-logs.html" class="data-entry"><span>🏥</span> Sphynx Skin Integrity Log</a>
+            <a href="pounce-trajectory.html" class="data-entry"><span>🐾</span> Red Dot Entanglement</a>
         </div>
     </section>
 
@@ -76,11 +89,9 @@
             let input = document.getElementById('vaultSearch').value.toLowerCase();
             let entries = document.getElementsByClassName('data-entry');
             let headers = document.getElementsByClassName('cat-header');
-            
             for (let entry of entries) {
                 entry.style.display = entry.innerText.toLowerCase().includes(input) ? "flex" : "none";
             }
-            
             for (let header of headers) {
                 let panel = header.nextElementSibling;
                 let hasVisible = Array.from(panel.getElementsByClassName('data-entry')).some(e => e.style.display !== "none");
@@ -104,6 +115,5 @@
             });
         }
     </script>
-
 </body>
 </html>
