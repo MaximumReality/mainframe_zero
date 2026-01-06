@@ -5,35 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firewall Bypass | Azul's Lab</title>
     <style>
-        body { background: #000; color: #00e5ff; font-family: 'Courier New', monospace; padding: 20px; line-height: 1.4; }
-        .nav { position: fixed; top: 0; left: 0; width: 100%; padding: 15px; background: #000; border-bottom: 1px solid #00e5ff; display: flex; justify-content: space-between; z-index: 100; }
-        .back-btn { color: #00e5ff; text-decoration: none; font-size: 0.7rem; }
+        /* SWITCHED TO CLINICAL WHITE THEME */
+        body { background: #050505; color: #ffffff; font-family: 'Courier New', monospace; padding: 20px; line-height: 1.4; margin: 0; }
         
-        .incident-report { margin-top: 70px; border: 1px solid #ff0000; padding: 20px; background: rgba(255, 0, 0, 0.05); }
-        .glitch-text { animation: flicker 0.1s infinite; color: #ff0000; font-weight: bold; }
+        .nav { position: fixed; top: 0; left: 0; width: 100%; padding: 15px; background: #000; border-bottom: 1px solid #444; display: flex; justify-content: space-between; z-index: 100; }
+        .back-btn { color: #ffffff; text-decoration: none; font-size: 0.7rem; border: 1px solid #444; padding: 5px 10px; }
+        
+        .incident-report { margin-top: 80px; border: 1px solid #ff0000; padding: 20px; background: rgba(255, 0, 0, 0.05); }
+        .glitch-text { animation: flicker 0.1s infinite; color: #ff0000; font-weight: bold; font-size: 0.8rem; }
         @keyframes flicker { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
-        .log-section { margin-top: 25px; border-left: 1px solid #00e5ff; padding-left: 15px; }
-        h2 { font-size: 0.9rem; color: #fff; text-transform: uppercase; }
-        .code-block { background: #111; padding: 10px; font-size: 0.7rem; color: #32cd32; border-radius: 4px; overflow-x: auto; margin: 10px 0; }
+        /* VIDEO MONITOR STYLING */
+        .evidence-monitor { border: 1px solid #444; margin: 20px 0; background: #000; position: relative; }
+        .monitor-label { position: absolute; top: 5px; left: 5px; background: #fff; color: #000; padding: 2px 8px; font-size: 10px; z-index: 5; font-weight: bold; }
+        video { width: 100%; display: block; filter: grayscale(100%); }
+
+        .log-section { margin-top: 25px; border-left: 1px solid #444; padding-left: 15px; }
+        h2 { font-size: 0.9rem; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+        .code-block { background: #111; padding: 10px; font-size: 0.7rem; color: #fff; border: 1px solid #333; border-radius: 4px; overflow-x: auto; margin: 10px 0; }
     </style>
 </head>
 <body>
 
     <div class="nav">
-        <a href="index.html" class="back-btn">← RETURN_TO_MAINFRAME</a>
-        <span style="font-size: 0.6rem;">LOG_ID: BYPASS_4.0</span>
+        <a href="index.html" class="back-btn">← MAINFRAME_ZERO</a>
+        <span style="font-size: 0.6rem; color: #888;">LOG: GOURMET_DATA_EXTRACTION</span>
     </div>
 
     <div class="incident-report">
-        <div class="glitch-text">⚠️ SYSTEM_INSTABILITY_WARNING</div>
+        <div class="glitch-text">⚠️ PENETRATING CULINARY FIREWALLS</div>
         <h1 style="font-size: 1.1rem; margin: 10px 0;">Bypassing Kitchen Firewalls v4.0</h1>
-        <p style="font-size: 0.7rem;">Status: <span style="color:#ff0000;">PARTIAL_FAILURE</span></p>
+        <p style="font-size: 0.7rem;">Status: <span style="color:#ff0000;">PARTIAL_FAILURE // EVIDENCE_RECOVERED</span></p>
+    </div>
+
+    <div class="evidence-monitor">
+        <div class="monitor-label">RECOVERED_FEED: CAM_02</div>
+        <video id="bypassVideo" autoplay muted loop playsinline preload="auto">
+            <source src="mochkils-diary.mp4#t=0.001" type="video/mp4">
+        </video>
+        <button onclick="var v=document.getElementById('bypassVideo'); v.muted=!v.muted; this.innerHTML=v.muted?'[ AUDIO_OFF ]':'[ AUDIO_LIVE ]';" 
+                style="width: 100%; background: #fff; color: #000; border: none; padding: 10px; font-family: monospace; font-size: 0.7rem; font-weight: bold; cursor: pointer;">
+            [ TOGGLE_AUDIO_UPLINK ]
+        </button>
     </div>
 
     <div class="log-section">
         <h2>OBJECTIVE: THE TREAT CABINET</h2>
-        <p style="font-size: 0.8rem;">Attempted to use a high-frequency **Neural Purr** to vibrate the magnetic latch on the pantry door. The frequency harmonized with the home's Wi-Fi router, causing a temporary reality collapse in the kitchen.</p>
+        <p style="font-size: 0.8rem;">Attempted to use a high-frequency **Neural Purr** to vibrate the magnetic latch. Video feed shows the resulting "Diary Breach" where target data (Cookies/Beef) was successfully identified.</p>
     </div>
 
     <div class="log-section">
@@ -41,19 +59,21 @@
         <div class="code-block">
             run script: purr_oscillator.sh<br>
             target: pantry_latch_01<br>
-            frequency: 44.1kHz (High Density)<br>
-            result: [ERROR] GHOSTS_IN_THE_MACHINE
+            result: [ERROR] GHOSTS_IN_THE_MACHINE<br>
+            recovery: Data extracted via diary_leak.mp4
         </div>
     </div>
 
-    <div class="log-section">
-        <h2>SIDE EFFECTS</h2>
-        <p style="font-size: 0.8rem;">The "Glitch Mode" on Mainframe Zero is a direct result of the feedback loop created during the bypass. If you see raining red text, do not panic. It is simply the pantry door's encryption code leaking into the local atmosphere.</p>
-    </div>
-
-    <p style="text-align: center; margin-top: 40px; font-size: 0.6rem; opacity: 0.4;">
+    <p style="text-align: center; margin: 40px 0; font-size: 0.6rem; opacity: 0.4;">
         "The salmon treats remain behind the firewall... for now." — Azul
     </p>
+
+    <script>
+        // Safari Wake-up Script
+        document.addEventListener('touchstart', function() {
+            document.querySelectorAll('video').forEach(v => v.play());
+        }, {once: true});
+    </script>
 
 </body>
 </html>
