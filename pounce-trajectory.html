@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Dot Entanglement | Azul's Physics</title>
+    <style>
+        body { background: #000; color: #00e5ff; font-family: 'Courier New', monospace; padding: 20px; line-height: 1.5; }
+        .nav { position: fixed; top: 0; left: 0; width: 100%; padding: 15px; background: rgba(0,0,0,0.9); border-bottom: 1px solid #00e5ff; display: flex; justify-content: space-between; z-index: 100; }
+        .back-btn { color: #00e5ff; text-decoration: none; font-size: 0.7rem; font-weight: bold; }
+        
+        .paper-container { margin-top: 70px; border: 1px solid rgba(0, 229, 255, 0.3); padding: 20px; position: relative; }
+        .watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 4rem; opacity: 0.05; pointer-events: none; white-space: nowrap; }
+
+        h1 { font-size: 1.1rem; color: #fff; text-transform: uppercase; border-bottom: 1px solid #00e5ff; padding-bottom: 10px; }
+        .abstract { font-style: italic; font-size: 0.8rem; background: rgba(0, 229, 255, 0.05); padding: 15px; margin: 20px 0; border-left: 2px solid #00e5ff; }
+
+        .diagram-box { width: 100%; height: 150px; border: 1px dashed #444; margin: 20px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.6rem; color: #666; position: relative; }
+        .red-dot { width: 6px; height: 6px; background: #ff0000; border-radius: 50%; box-shadow: 0 0 10px #ff0000; position: absolute; animation: teleport 2s infinite; }
+        
+        @keyframes teleport {
+            0% { top: 20%; left: 20%; opacity: 1; }
+            30% { top: 80%; left: 70%; opacity: 1; }
+            35% { opacity: 0; }
+            40% { top: 40%; left: 10%; opacity: 1; }
+            100% { top: 20%; left: 20%; opacity: 1; }
+        }
+
+        .data-point { margin-bottom: 20px; }
+        .label { color: #fff; font-size: 0.75rem; font-weight: bold; display: block; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <a href="index.html" class="back-btn">← TERMINAL_EXIT</a>
+        <span style="font-size: 0.6rem;">PHYS_LOG: DOT_09</span>
+    </div>
+
+    <div class="paper-container">
+        <div class="watermark">PROPERTY OF AZUL</div>
+        
+        <h1>Entanglement of the Red Dot (Photonis Elusivus)</h1>
+        
+        <div class="abstract">
+            <strong>ABSTRACT:</strong> The "Red Dot" represents a unique anomaly in classical mechanics. Despite 1,000+ pounce attempts, zero mass has been recovered. This paper argues that the Dot exists in a state of **Quantum Elusiveness**: it only exists as long as the feline is looking at it, but disappears the moment the paw makes contact.
+        </div>
+
+        <div class="diagram-box">
+            <div class="red-dot"></div>
+            <span>[ SIMULATED_PARTICLE_TRAJECTORY ]</span>
+            <span style="margin-top: 50px; font-size: 0.5rem;">STATUS: UNCONTAINABLE</span>
+        </div>
+
+        <div class="data-point">
+            <span class="label">HYPOTHESIS 01: The Floor is a Lie</span>
+            <p style="font-size: 0.8rem;">The Dot does not travel *across* the rug; it tunnels *through* the rug via micro-wormholes. This explains the 0.0001s travel time from the sofa to the hallway.</p>
+        </div>
+
+        <div class="data-point">
+            <span class="label">HYPOTHESIS 02: Human Entanglement</span>
+            <p style="font-size: 0.8rem;">There is a high correlation between the Dot's appearance and the movement of the human's hand. I suspect the human is acting as a "Quantum Observer," inadvertently (or maliciously) maintaining the Dot's coherence.</p>
+        </div>
+
+        <div class="data-point">
+            <span class="label">CONCLUSION:</span>
+            <p style="font-size: 0.8rem;">Further research required. Specifically, I need a high-speed camera and 4.0kg of premium tuna to fuel the neural processing required for the next pounce.</p>
+        </div>
+
+    </div>
+
+    <p style="text-align: center; margin-top: 30px; font-size: 0.6rem; opacity: 0.5;">
+        SUBMITTED TO THE JOURNAL OF FELINE QUANTUM MECHANICS
+    </p>
+
+</body>
+</html>
