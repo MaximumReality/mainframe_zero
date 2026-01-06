@@ -16,13 +16,22 @@
         @keyframes flicker { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
         /* VIDEO MONITOR STYLING */
-        .evidence-monitor { border: 1px solid #444; margin: 20px 0; background: #000; position: relative; }
-        .monitor-label { position: absolute; top: 5px; left: 5px; background: #fff; color: #000; padding: 2px 8px; font-size: 10px; z-index: 5; font-weight: bold; }
-        video { width: 100%; display: block; filter: grayscale(100%); }
+        .evidence-monitor { 
+    border: 1px solid #444; 
+    margin: 15px auto; 
+    background: #000; 
+    position: relative; 
+    max-width: 90%; /* Keeps it from hitting the screen edges */
+}
 
-        .log-section { margin-top: 25px; border-left: 1px solid #444; padding-left: 15px; }
-        h2 { font-size: 0.9rem; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
-        .code-block { background: #111; padding: 10px; font-size: 0.7rem; color: #fff; border: 1px solid #333; border-radius: 4px; overflow-x: auto; margin: 10px 0; }
+video { 
+    width: 100%; 
+    max-height: 250px; /* This stops the video from being huge on your iPhone */
+    object-fit: cover; /* This keeps the video looking sharp while cropped */
+    display: block; 
+    filter: grayscale(30%) contrast(110%); /* Restores 70% of the color */
+}
+
     </style>
 </head>
 <body>
@@ -48,6 +57,7 @@
         [ TOGGLE_AUDIO_UPLINK ]
     </button>
 </div>
+
 
 
     <div class="log-section">
