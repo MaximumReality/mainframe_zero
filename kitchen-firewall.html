@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall Bypass | Azul's Lab</title>
+    <style>
+        body { background: #000; color: #00e5ff; font-family: 'Courier New', monospace; padding: 20px; line-height: 1.4; }
+        .nav { position: fixed; top: 0; left: 0; width: 100%; padding: 15px; background: #000; border-bottom: 1px solid #00e5ff; display: flex; justify-content: space-between; z-index: 100; }
+        .back-btn { color: #00e5ff; text-decoration: none; font-size: 0.7rem; }
+        
+        .incident-report { margin-top: 70px; border: 1px solid #ff0000; padding: 20px; background: rgba(255, 0, 0, 0.05); }
+        .glitch-text { animation: flicker 0.1s infinite; color: #ff0000; font-weight: bold; }
+        @keyframes flicker { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+        .log-section { margin-top: 25px; border-left: 1px solid #00e5ff; padding-left: 15px; }
+        h2 { font-size: 0.9rem; color: #fff; text-transform: uppercase; }
+        .code-block { background: #111; padding: 10px; font-size: 0.7rem; color: #32cd32; border-radius: 4px; overflow-x: auto; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <a href="index.html" class="back-btn">← RETURN_TO_MAINFRAME</a>
+        <span style="font-size: 0.6rem;">LOG_ID: BYPASS_4.0</span>
+    </div>
+
+    <div class="incident-report">
+        <div class="glitch-text">⚠️ SYSTEM_INSTABILITY_WARNING</div>
+        <h1 style="font-size: 1.1rem; margin: 10px 0;">Bypassing Kitchen Firewalls v4.0</h1>
+        <p style="font-size: 0.7rem;">Status: <span style="color:#ff0000;">PARTIAL_FAILURE</span></p>
+    </div>
+
+    <div class="log-section">
+        <h2>OBJECTIVE: THE TREAT CABINET</h2>
+        <p style="font-size: 0.8rem;">Attempted to use a high-frequency **Neural Purr** to vibrate the magnetic latch on the pantry door. The frequency harmonized with the home's Wi-Fi router, causing a temporary reality collapse in the kitchen.</p>
+    </div>
+
+    <div class="log-section">
+        <h2>EXPLOIT_CODE</h2>
+        <div class="code-block">
+            run script: purr_oscillator.sh<br>
+            target: pantry_latch_01<br>
+            frequency: 44.1kHz (High Density)<br>
+            result: [ERROR] GHOSTS_IN_THE_MACHINE
+        </div>
+    </div>
+
+    <div class="log-section">
+        <h2>SIDE EFFECTS</h2>
+        <p style="font-size: 0.8rem;">The "Glitch Mode" on Mainframe Zero is a direct result of the feedback loop created during the bypass. If you see raining red text, do not panic. It is simply the pantry door's encryption code leaking into the local atmosphere.</p>
+    </div>
+
+    <p style="text-align: center; margin-top: 40px; font-size: 0.6rem; opacity: 0.4;">
+        "The salmon treats remain behind the firewall... for now." — Azul
+    </p>
+
+</body>
+</html>
