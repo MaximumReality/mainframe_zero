@@ -21,16 +21,29 @@
     margin: 15px auto; 
     background: #000; 
     position: relative; 
-    max-width: 90%; /* Keeps it from hitting the screen edges */
+    max-width: 95%;
+    overflow: hidden; /* Keeps scanlines inside the box */
+}
+
+/* THE SCANLINE OVERLAY */
+.evidence-monitor::after {
+    content: " ";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+    background-size: 100% 4px; /* Creates the horizontal line effect */
+    z-index: 2;
+    pointer-events: none; /* Allows you to still click the play button */
 }
 
 video { 
     width: 100%; 
-    max-height: 250px; /* This stops the video from being huge on your iPhone */
-    object-fit: cover; /* This keeps the video looking sharp while cropped */
+    max-height: 280px; 
+    object-fit: cover; 
     display: block; 
-    filter: grayscale(30%) contrast(110%); /* Restores 70% of the color */
+    filter: grayscale(100%) contrast(150%) brightness(80%); /* Pure Noir look */
 }
+
 
     </style>
 </head>
@@ -53,14 +66,15 @@ video {
         <source src="https://maximumreality.github.io/backdoor/mochkils-diary.mp4#t=0.001" type="video/mp4">
     </video>
     <button onclick="var v=document.getElementById('bypassVideo'); v.muted=!v.muted; this.innerHTML=v.muted?'[ AUDIO_OFF ]':'[ AUDIO_LIVE ]';" 
-            style="width: 100%; background: #fff; color: #000; border: none; padding: 10px; font-family: monospace; font-size: 0.7rem; font-weight: bold; cursor: pointer;">
+            style="width: 100%; background: #fff; color: #000; border: none; padding: 10px; font-family: monospace; font-size: 0.7rem; font-weight: bold; cursor: pointer; position: relative; z-index: 5;">
         [ TOGGLE_AUDIO_UPLINK ]
     </button>
 </div>
 
 
 
-    <div class="log-section">
+
+ <div class="log-section">
         <h2>OBJECTIVE: THE TREAT CABINET</h2>
         <p style="font-size: 0.8rem;">Attempted to use a high-frequency **Neural Purr** to vibrate the magnetic latch. Video feed shows the resulting "Diary Breach" where target data (Cookies/Beef) was successfully identified.</p>
     </div>
