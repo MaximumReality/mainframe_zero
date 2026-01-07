@@ -54,7 +54,7 @@
         <input type="text" id="vaultSearch" onkeyup="searchVault()" placeholder="SEARCH_QUANTUM_FILES...">
     </div>
 
-    <section class="lab-section">
+       <section class="lab-section">
         <button class="cat-header"> [ 01 ] QUANTUM_FLUX <span class="arrow">▼</span></button>
         <div class="link-panel">
             <a href="quantum-catnip.html" class="data-entry"><span>⚛️</span> Catnip Superposition Theory</a>
@@ -70,6 +70,32 @@
             <a href="medical-logs.html" class="data-entry"><span>🏥</span> Sphynx Skin Integrity Log</a>
             <a href="pounce-trajectory.html" class="data-entry"><span>🐾</span> Red Dot Entanglement</a>
         </div>
+
+        <div class="terminal-container" style="position: relative; border: 1px solid #00ff00; background: #000; margin: 20px 15px; overflow: hidden; height: 250px; border-radius: 8px;">
+            <video id="terminalVideo" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4;">
+                <source src="green_rain.mp4" type="video/mp4">
+            </video>
+
+            <div style="position: relative; z-index: 10; padding: 20px; font-family: 'Courier New', monospace;">
+                <h1 style="color: #00ff00; font-size: 1rem; text-shadow: 0 0 10px #00ff00;">> MAINFRAME_BOOT...</h1>
+                <p style="color: #00ff00; font-size: 0.7rem; line-height: 1.5;">
+                    [ STATUS ]: BREACH_BY_MOCHKIL<br>
+                    [ INTEL ]: AZUL_DIMENSION_SHIFT<br>
+                    [ NEWS ]: SORA_2_UPLINK_LIVE
+                </p>
+                
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <a href="cctv.html" style="color: #00ff00; text-decoration: none; border: 1px solid #00ff00; padding: 5px; font-size: 0.6rem;">[ FEEDS ]</a>
+                    <a href="quantum.html" style="color: #00ff00; text-decoration: none; border: 1px solid #00ff00; padding: 5px; font-size: 0.6rem;">[ LAB ]</a>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="var v=document.getElementById('terminalVideo'); v.muted=!v.muted; this.innerHTML=v.muted?'[ AUDIO_OFF ]':'[ AUDIO_LIVE ]';" 
+                style="width: calc(100% - 30px); margin: 0 15px; background: var(--neon-blue); color: #000; border: none; padding: 12px; font-family: monospace; font-size: 0.7rem; font-weight: bold; cursor: pointer; border-radius: 4px;">
+            [ AUDIO_OFF ]
+        </button>
+
     </section>
 
     <script>
