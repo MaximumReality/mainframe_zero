@@ -18,7 +18,20 @@
 
         /* THE SIMULATION MONITOR */
       /* Change this in your <style> section */
-.sim-monitor video { 
+/* ADD THIS BACK to ensure the box actually exists */
+.sim-monitor { 
+    border: 1px solid var(--neon-blue); 
+    margin: 20px 0; 
+    background: #000; 
+    position: relative; 
+    overflow: hidden; 
+    aspect-ratio: 16/9; 
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); 
+}
+
+/* Your updated video code below it is perfect */
+
+    .sim-monitor video { 
     width: 100%; 
     height: 100%; 
     object-fit: contain; /* Changed from cover to contain */
@@ -28,11 +41,33 @@
 
         
         /* TARGETING RETICLE OVERLAY */
-        .reticle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; border: 1px solid var(--neon-red); border-radius: 50%; opacity: 0.5; animation: pulse 2s infinite; }
-        .reticle::before { content: ''; position: absolute; top: 50%; left: -10px; width: 120px; height: 1px; background: var(--neon-red); }
-        .reticle::after { content: ''; position: absolute; left: 50%; top: -10px; width: 1px; height: 120px; background: var(--neon-red); }
-        
-        @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; } 50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; } 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; } }
+        /* Update your .reticle style */
+.reticle { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 60px; /* Made it smaller to fit his head better */
+    height: 60px; 
+    border: 2px solid var(--neon-red); 
+    border-radius: 50%; 
+    opacity: 0.8; 
+    animation: pulse 1.5s infinite; 
+}
+
+/* Add a Neural Label next to the target */
+.reticle::after {
+    content: 'NEURAL_LOCK_ACTIVE';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--neon-red);
+    font-size: 0.4rem;
+    white-space: nowrap;
+    text-shadow: 0 0 5px var(--neon-red);
+}
+
 
         .coords { position: absolute; top: 10px; right: 10px; font-size: 0.5rem; color: var(--neon-red); text-align: right; font-weight: bold; text-shadow: 0 0 5px var(--neon-red); }
 
