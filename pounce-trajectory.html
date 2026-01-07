@@ -3,75 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Dot Entanglement | Azul's Physics</title>
+    <title>Pounce Trajectory | Red Dot Entanglement</title>
     <style>
-        body { background: #000; color: #00e5ff; font-family: 'Courier New', monospace; padding: 20px; line-height: 1.5; }
-        .nav { position: fixed; top: 0; left: 0; width: 100%; padding: 15px; background: rgba(0,0,0,0.9); border-bottom: 1px solid #00e5ff; display: flex; justify-content: space-between; z-index: 100; }
-        .back-btn { color: #00e5ff; text-decoration: none; font-size: 0.7rem; font-weight: bold; }
+        :root { --neon-blue: #00e5ff; --neon-red: #ff3333; --bg-black: #050505; }
+        body { background: var(--bg-black); color: #fff; font-family: 'Courier New', monospace; padding: 20px; line-height: 1.4; margin: 0; overflow-x: hidden; }
         
-        .paper-container { margin-top: 70px; border: 1px solid rgba(0, 229, 255, 0.3); padding: 20px; position: relative; }
-        .watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 4rem; opacity: 0.05; pointer-events: none; white-space: nowrap; }
-
-        h1 { font-size: 1.1rem; color: #fff; text-transform: uppercase; border-bottom: 1px solid #00e5ff; padding-bottom: 10px; }
-        .abstract { font-style: italic; font-size: 0.8rem; background: rgba(0, 229, 255, 0.05); padding: 15px; margin: 20px 0; border-left: 2px solid #00e5ff; }
-
-        .diagram-box { width: 100%; height: 150px; border: 1px dashed #444; margin: 20px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.6rem; color: #666; position: relative; }
-        .red-dot { width: 6px; height: 6px; background: #ff0000; border-radius: 50%; box-shadow: 0 0 10px #ff0000; position: absolute; animation: teleport 2s infinite; }
+        .nav { position: fixed; top: 0; left: 0; width: 100%; padding: 15px; background: #000; border-bottom: 1px solid var(--neon-blue); display: flex; justify-content: space-between; z-index: 100; }
+        .back-btn { color: var(--neon-blue); text-decoration: none; font-size: 0.7rem; border: 1px solid var(--neon-blue); padding: 5px 10px; }
         
-        @keyframes teleport {
-            0% { top: 20%; left: 20%; opacity: 1; }
-            30% { top: 80%; left: 70%; opacity: 1; }
-            35% { opacity: 0; }
-            40% { top: 40%; left: 10%; opacity: 1; }
-            100% { top: 20%; left: 20%; opacity: 1; }
-        }
+        .scanline { width: 100%; height: 2px; background: rgba(0, 229, 255, 0.1); position: fixed; top: 50px; animation: scan 3s linear infinite; z-index: 5; pointer-events: none; }
+        @keyframes scan { 0% { top: 50px; } 100% { top: 100%; } }
 
-        .data-point { margin-bottom: 20px; }
-        .label { color: #fff; font-size: 0.75rem; font-weight: bold; display: block; margin-bottom: 5px; }
+        .header-box { margin-top: 80px; border: 1px solid var(--neon-blue); padding: 20px; background: rgba(0, 229, 255, 0.05); }
+
+        /* THE SIMULATION MONITOR */
+      /* Change this in your <style> section */
+.sim-monitor video { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; /* Changed from cover to contain */
+    background: #000;
+    filter: grayscale(100%) brightness(0.9) contrast(1.3); 
+}
+
+        
+        /* TARGETING RETICLE OVERLAY */
+        .reticle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; border: 1px solid var(--neon-red); border-radius: 50%; opacity: 0.5; animation: pulse 2s infinite; }
+        .reticle::before { content: ''; position: absolute; top: 50%; left: -10px; width: 120px; height: 1px; background: var(--neon-red); }
+        .reticle::after { content: ''; position: absolute; left: 50%; top: -10px; width: 1px; height: 120px; background: var(--neon-red); }
+        
+        @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; } 50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; } 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; } }
+
+        .coords { position: absolute; top: 10px; right: 10px; font-size: 0.5rem; color: var(--neon-red); text-align: right; font-weight: bold; text-shadow: 0 0 5px var(--neon-red); }
+
+        .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .data-card { border: 1px solid #222; padding: 10px; font-size: 0.65rem; background: rgba(255,255,255,0.02); }
+        .data-card span { color: var(--neon-blue); display: block; margin-bottom: 5px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+
+        .footer { font-size: 0.6rem; opacity: 0.5; text-align: center; margin-top: 50px; padding-bottom: 30px; border-top: 1px solid #222; padding-top: 20px; }
     </style>
 </head>
 <body>
-
+    <div class="scanline"></div>
     <div class="nav">
-        <a href="index.html" class="back-btn">← TERMINAL_EXIT</a>
-        <span style="font-size: 0.6rem;">PHYS_LOG: DOT_09</span>
+        <a href="index.html" class="back-btn">← RETURN_TO_MAINFRAME</a>
+        <span style="font-size: 0.6rem; color: var(--neon-blue);">FILE: RED_DOT_LOG_77</span>
     </div>
 
-    <div class="paper-container">
-        <div class="watermark">PROPERTY OF AZUL</div>
-        
-        <h1>Entanglement of the Red Dot (Photonis Elusivus)</h1>
-        
-        <div class="abstract">
-            <strong>ABSTRACT:</strong> The "Red Dot" represents a unique anomaly in classical mechanics. Despite 1,000+ pounce attempts, zero mass has been recovered. This paper argues that the Dot exists in a state of **Quantum Elusiveness**: it only exists as long as the feline is looking at it, but disappears the moment the paw makes contact.
-        </div>
-
-        <div class="diagram-box">
-            <div class="red-dot"></div>
-            <span>[ SIMULATED_PARTICLE_TRAJECTORY ]</span>
-            <span style="margin-top: 50px; font-size: 0.5rem;">STATUS: UNCONTAINABLE</span>
-        </div>
-
-        <div class="data-point">
-            <span class="label">HYPOTHESIS 01: The Floor is a Lie</span>
-            <p style="font-size: 0.8rem;">The Dot does not travel *across* the rug; it tunnels *through* the rug via micro-wormholes. This explains the 0.0001s travel time from the sofa to the hallway.</p>
-        </div>
-
-        <div class="data-point">
-            <span class="label">HYPOTHESIS 02: Human Entanglement</span>
-            <p style="font-size: 0.8rem;">There is a high correlation between the Dot's appearance and the movement of the human's hand. I suspect the human is acting as a "Quantum Observer," inadvertently (or maliciously) maintaining the Dot's coherence.</p>
-        </div>
-
-        <div class="data-point">
-            <span class="label">CONCLUSION:</span>
-            <p style="font-size: 0.8rem;">Further research required. Specifically, I need a high-speed camera and 4.0kg of premium tuna to fuel the neural processing required for the next pounce.</p>
-        </div>
-
+    <div class="header-box">
+        <h1 style="font-size: 1.1rem; color: var(--neon-blue); margin: 0;">SUBJECT: RED_DOT_ENTANGLEMENT</h1>
+        <p style="font-size: 0.7rem; margin-top: 5px; color: #888;">Observation of Non-Newtonian Feline Propulsion</p>
     </div>
 
-    <p style="text-align: center; margin-top: 30px; font-size: 0.6rem; opacity: 0.5;">
-        SUBMITTED TO THE JOURNAL OF FELINE QUANTUM MECHANICS
-    </p>
+    <div class="sim-monitor">
+        <div style="position: absolute; top: 10px; left: 10px; background: var(--neon-blue); color: #000; padding: 2px 6px; font-size: 0.6rem; font-weight: bold; z-index: 10;">LIVE_ANALYSIS</div>
+        
+        <video id="redDotVideo" autoplay muted loop playsinline>
+            <source src="red_dot.mp4" type="video/mp4">
+        </video>
 
+        <div class="reticle"></div>
+        <div class="coords">
+            LOCK_ON: RED_DOT_01<br>
+            STATUS: [ UNSTABLE ]<br>
+            AZIMUTH: 184.2°
+        </div>
+    </div>
+
+    <div class="data-grid">
+        <div class="data-card">
+            <span>VELOCITY</span>
+            REDACTED (Exceeds Mach 1)
+        </div>
+        <div class="data-card">
+            <span>TAIL_FLICK</span>
+            High-Frequency Sync
+        </div>
+        <div class="data-card">
+            <span>PUPIL_STATE</span>
+            Maximum_Dilation
+        </div>
+        <div class="data-card">
+            <span>STRIKE_RESULT</span>
+            Reality_Glitch
+        </div>
+    </div>
+
+    <div style="margin-top: 20px; font-size: 0.75rem; border-left: 2px solid var(--neon-blue); padding-left: 15px; color: #ccc;">
+        <p><strong>AZUL'S NOTES:</strong> The "Red Dot" appears to be a photon-based lifeform capable of teleportation. Subject Mochkil has attempted 412 strikes today. Accuracy remains at 0%. Further testing required in the kitchen sector.</p>
+    </div>
+
+    <div class="footer">
+        MAXIMUM_REALITY_LABS // QUANTUM_DIVISION
+    </div>
+
+    <script>
+        document.addEventListener('touchstart', function() {
+            document.querySelectorAll('video').forEach(v => v.play());
+        }, {once: true});
+    </script>
 </body>
 </html>
