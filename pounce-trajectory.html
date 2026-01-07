@@ -16,6 +16,20 @@
 
         .header-box { margin-top: 80px; border: 1px solid var(--neon-blue); padding: 20px; background: rgba(0, 229, 255, 0.05); }
 
+        @keyframes glitch {
+    0% { transform: translate(0); text-shadow: none; }
+    20% { transform: translate(-2px, 2px); text-shadow: 2px 0 var(--neon-red), -2px 0 var(--neon-blue); }
+    40% { transform: translate(-2px, -2px); text-shadow: -2px 0 var(--neon-red), 2px 0 var(--neon-blue); }
+    60% { transform: translate(2px, 2px); text-shadow: 2px 0 var(--neon-red), -2px 0 var(--neon-blue); }
+    80% { transform: translate(2px, -2px); text-shadow: -2px 0 var(--neon-red), 2px 0 var(--neon-blue); }
+    100% { transform: translate(0); }
+}
+
+.header-box h1 {
+    animation: glitch 2s infinite;
+    animation-timing-function: step-end;
+}
+
         /* THE SIMULATION MONITOR */
       /* Change this in your <style> section */
 /* ADD THIS BACK to ensure the box actually exists */
@@ -75,7 +89,25 @@
         .data-card { border: 1px solid #222; padding: 10px; font-size: 0.65rem; background: rgba(255,255,255,0.02); }
         .data-card span { color: var(--neon-blue); display: block; margin-bottom: 5px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
 
-        .footer { font-size: 0.6rem; opacity: 0.5; text-align: center; margin-top: 50px; padding-bottom: 30px; border-top: 1px solid #222; padding-top: 20px; }
+        .footer { 
+    font-size: 0.6rem; 
+    opacity: 0.8; 
+    text-align: center; 
+    margin-top: 50px; 
+    padding: 30px 10px; 
+    border-top: 1px solid #222; 
+    background: linear-gradient(to bottom, transparent, rgba(0, 229, 255, 0.03));
+    color: var(--neon-blue);
+    letter-spacing: 1px;
+}
+
+#sector-clock {
+    margin-top: 15px;
+    font-family: monospace;
+    display: block;
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
     </style>
 </head>
 <body>
@@ -127,20 +159,30 @@
     <div style="margin-top: 20px; font-size: 0.75rem; border-left: 2px solid var(--neon-blue); padding-left: 15px; color: #ccc;">
         <p><strong>AZUL'S NOTES:</strong> The "Red Dot" appears to be a photon-based lifeform capable of teleportation. Subject Mochkil has attempted 412 strikes today. Accuracy remains at 0%. Further testing required in the kitchen sector.</p>
     </div>
+<div class="data-block" style="border: 1px solid var(--neon-red); background: rgba(255, 51, 85, 0.05); padding: 15px; margin-top: 20px; border-left: 4px solid var(--neon-red);">
+    <h3 style="background: var(--neon-red); color: #000; font-size: 0.7rem; padding: 2px 8px; display: inline-block; margin: 0 0 10px 0;">[ URGENT_NEWS_FEED ]</h3>
+    <p style="font-size: 0.75rem; color: #fff; line-height: 1.5; margin: 0;">
+        <span style="color: var(--neon-red); font-weight: bold;">FLASH:</span> Localized photon anomalies detected in <strong>Marrakesh_01</strong>. 
+        <br><br>
+        Security Specialist <strong>Azul</strong> has deployed Subject <strong>Mochkil</strong> to intercept a high-velocity entity (ID: RED_DOT). Telemetry suggests 5th-dimensional phasing. 
+        <br><br>
+        <span style="color: var(--neon-blue);">WARNING:</span> Avoid physical contact. Reality glitches may occur. Accuracy remains 0.00%.
+    </p>
+</div>
 
-    <div class="footer">
-        MAXIMUM_REALITY_LABS // QUANTUM_DIVISION
+   <div class="footer">
+    MAXIMUM_REALITY_LABS // QUANTUM_DIVISION
+    <div id="sector-clock">
+        SECTOR: MARRAKESH_01 // TIME: <span id="clock-sync">LOADING...</span>
     </div>
+</div>
 
     <script>
         document.addEventListener('touchstart', function() {
             document.querySelectorAll('video').forEach(v => v.play());
         }, {once: true});
     </script>
-    <div id="sector-clock" style="font-size: 0.6rem; color: var(--neon-blue); text-align: center; padding: 10px; border-top: 1px solid #111; font-family: monospace; opacity: 0.8;">
-    SECTOR: MARRAKESH_01 // TIME: <span id="clock-sync">LOADING...</span>
-</div>
-
+ 
 <script>
     function updateClock() {
         const now = new Date();
