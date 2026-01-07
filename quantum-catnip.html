@@ -48,6 +48,23 @@
         <p style="font-size: 0.7rem; margin-top: 10px;">Author: Dr. Azul, PhD (Physics/Hacking)</p>
     </div>
 
+    <div class="data-block">
+    <h3>DATA_COMPARISON: THEORY VS REALITY</h3>
+    <p style="font-size: 0.8rem;">
+        <strong>LOG_041 (The Schrödinger Protocol):</strong><br>
+        • Observation: Subject (Azul) maintains ocular focus on sealed container.<br>
+        • Quantum State: Treats exist in "Unattainable Deliciousness" (Open/Closed superposition).<br>
+        • Result: Kitchen gravity increased by 12% due to intense staring.
+    </p>
+    <hr style="border: 0; border-top: 1px solid rgba(0, 229, 255, 0.2); margin: 10px 0;">
+    <p style="font-size: 0.8rem;">
+        <strong>LOG_042 (The Storage Breach):</strong><br>
+        • Observation: "Neural Purr" successfully bypassed magnetic latch.<br>
+        • Quantum State: Superposition collapsed. Catnip flooding detected.<br>
+        • Result: Absolute success. Subject "Mochkil" entered 5th-dimension zoomies.
+    </p>
+</div>
+
         <div class="evidence-monitor">
         <div class="monitor-label">LOG_041: THEORETICAL_SUPERPOSITION (JAR)</div>
         <video id="jarVideo" autoplay muted loop playsinline preload="auto">
@@ -90,9 +107,14 @@
     </div>
 
     <script>
-        document.addEventListener('touchstart', function() {
-            document.querySelectorAll('video').forEach(v => v.play());
-        }, {once: true});
-    </script>
+    document.addEventListener('touchstart', function() {
+        // This ensures all videos in the Lab start simultaneously
+        const videos = document.querySelectorAll('video');
+        videos.forEach(v => {
+            v.play().catch(error => console.log("Uplink sync failed:", error));
+        });
+    }, {once: true});
+</script>
+
 </body>
 </html>
