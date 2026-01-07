@@ -5,46 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quantum Catnip | Azul's Research</title>
     <style>
-        /* CLINICAL WHITE & NOIR THEME */
-        body { background: #050505; color: #ffffff; font-family: 'Courier New', monospace; padding: 20px; line-height: 1.4; margin: 0; }
+        /* REVERTED TO AZUL'S LAB BLUE */
+        body { background: #000; color: #00e5ff; font-family: 'Courier New', monospace; padding: 20px; line-height: 1.4; margin: 0; }
         
-        .nav { position: fixed; top: 0; left: 0; width: 100%; padding: 15px; background: #000; border-bottom: 1px solid #444; display: flex; justify-content: space-between; z-index: 100; }
-        .back-btn { color: #fff; text-decoration: none; font-size: 0.7rem; border: 1px solid #444; padding: 5px 10px; }
+        .nav { position: fixed; top: 0; left: 0; width: 100%; padding: 15px; background: #000; border-bottom: 1px solid #00e5ff; display: flex; justify-content: space-between; z-index: 100; }
+        .back-btn { color: #00e5ff; text-decoration: none; font-size: 0.7rem; border: 1px solid #00e5ff; padding: 5px 10px; }
         
-        /* MOVING SCANLINE ACROSS PAGE */
-        .scanline { width: 100%; height: 2px; background: rgba(255, 255, 255, 0.1); position: fixed; top: 50px; animation: scan 4s linear infinite; z-index: 5; pointer-events: none; }
+        /* MOVING BLUE SCANLINE */
+        .scanline { width: 100%; height: 2px; background: rgba(0, 229, 255, 0.3); position: fixed; top: 50px; animation: scan 3s linear infinite; z-index: 5; pointer-events: none; }
         @keyframes scan { 0% { top: 50px; } 100% { top: 100%; } }
 
-        .paper-header { margin-top: 80px; border: 1px solid #444; padding: 20px; }
+        .paper-header { margin-top: 80px; border: 1px solid #00e5ff; padding: 20px; }
 
-        /* NOIR MONITOR BOX */
-        .evidence-monitor { border: 1px solid #444; margin: 20px 0; background: #000; position: relative; overflow: hidden; }
+        /* NOIR MONITOR WITH BLUE ACCENTS */
+        .evidence-monitor { border: 1px solid #00e5ff; margin: 20px 0; background: #000; position: relative; overflow: hidden; }
         .evidence-monitor::after {
             content: " "; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 229, 255, 0.05) 50%);
             background-size: 100% 4px; z-index: 2; pointer-events: none;
         }
-        .monitor-label { position: absolute; top: 5px; left: 5px; background: #fff; color: #000; padding: 2px 8px; font-size: 10px; z-index: 5; font-weight: bold; }
+        .monitor-label { position: absolute; top: 5px; left: 5px; background: #00e5ff; color: #000; padding: 2px 8px; font-size: 10px; z-index: 5; font-weight: bold; }
         
-        video { width: 100%; max-height: 350px; object-fit: cover; display: block; filter: grayscale(100%) contrast(140%) brightness(90%); }
+        video { width: 100%; max-height: 350px; object-fit: cover; display: block; filter: grayscale(100%) contrast(150%) brightness(80%); }
 
-        .abstract { background: rgba(255, 255, 255, 0.05); padding: 15px; margin: 20px 0; border-left: 3px solid #fff; font-size: 0.8rem; }
-        .data-block { margin-bottom: 30px; border-left: 1px solid #333; padding-left: 15px; }
-        .data-block h3 { font-size: 0.8rem; background: #fff; color: #000; display: inline-block; padding: 2px 8px; margin-bottom: 10px; font-weight: bold; }
-        .footer { font-size: 0.6rem; opacity: 0.4; text-align: center; margin-top: 50px; padding-bottom: 30px; }
+        .abstract { background: rgba(0, 229, 255, 0.05); padding: 15px; margin: 20px 0; border-left: 3px solid #00e5ff; font-size: 0.8rem; }
+        .data-block { margin-bottom: 30px; border-left: 1px solid #00e5ff; padding-left: 15px; }
+        .data-block h3 { font-size: 0.8rem; background: #00e5ff; color: #000; display: inline-block; padding: 2px 8px; margin-bottom: 10px; font-weight: bold; }
+        
+        .footer { font-size: 0.6rem; opacity: 0.5; text-align: center; margin-top: 50px; padding-bottom: 30px; }
     </style>
 </head>
 <body>
     <div class="scanline"></div>
     <div class="nav">
         <a href="index.html" class="back-btn">← TERMINAL_EXIT</a>
-        <span style="font-size: 0.6rem; color: #888;">NODE: LAB_001</span>
+        <span style="font-size: 0.6rem;">NODE: LAB_001</span>
     </div>
 
     <div class="paper-header">
-        <div style="font-size: 0.6rem; margin-bottom: 5px; color: #888;">RESEARCH_ID: CATNIP_COHERENCE_2026</div>
+        <div style="font-size: 0.6rem; margin-bottom: 5px;">RESEARCH_ID: CATNIP_COHERENCE_2026</div>
         <h1 style="font-size: 1.2rem; margin: 0;">Observation of Quantum Coherence in Catnip Molecules</h1>
-        <p style="font-size: 0.7rem; margin-top: 10px; color: #888;">Author: Dr. Azul, PhD (Physics/Hacking)</p>
+        <p style="font-size: 0.7rem; margin-top: 10px;">Author: Dr. Azul, PhD (Physics/Hacking)</p>
     </div>
 
     <div class="evidence-monitor">
@@ -53,7 +54,7 @@
             <source src="treatjar.mp4#t=0.001" type="video/mp4">
         </video>
         <button onclick="var v=document.getElementById('treatVideo'); v.muted=!v.muted; this.innerHTML=v.muted?'[ AUDIO_OFF ]':'[ AUDIO_LIVE ]';" 
-                style="width: 100%; background: #fff; color: #000; border: none; padding: 10px; font-family: monospace; font-size: 0.7rem; font-weight: bold; cursor: pointer; position: relative; z-index: 5;">
+                style="width: 100%; background: #00e5ff; color: #000; border: none; padding: 12px; font-family: monospace; font-size: 0.7rem; font-weight: bold; cursor: pointer; position: relative; z-index: 5;">
             [ TOGGLE_AUDIO_UPLINK ]
         </button>
     </div>
@@ -77,7 +78,6 @@
     </div>
 
     <script>
-        // Safari Wake-up Script for iPhone
         document.addEventListener('touchstart', function() {
             document.querySelectorAll('video').forEach(v => v.play());
         }, {once: true});
