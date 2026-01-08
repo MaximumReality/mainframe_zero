@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZUL_QUANTUM | WHISKER_CRYPTOGRAPHY</title>
+    <style>
+        :root { --neon-blue: #00e5ff; --bg-black: #050505; }
+        body { background: var(--bg-black); color: #fff; font-family: 'Courier New', monospace; padding: 20px; margin: 0; overflow: hidden; }
+        
+        .header { border-bottom: 1px solid var(--neon-blue); padding-bottom: 10px; margin-bottom: 20px; }
+        .data-stream { font-size: 0.6rem; color: var(--neon-blue); height: 100px; overflow: hidden; opacity: 0.7; }
+        
+        /* THE WHISKER SCANNER */
+        #whiskerCanvas {
+            border: 1px solid #222;
+            background: radial-gradient(circle, #111 0%, #000 100%);
+            width: 100%;
+            height: 250px;
+            display: block;
+        }
+
+        .report-box { border: 1px solid #333; padding: 15px; background: rgba(0, 229, 255, 0.02); margin-top: 20px; }
+        .report-box h2 { font-size: 0.8rem; color: var(--neon-blue); margin-bottom: 10px; }
+        .report-box p { font-size: 0.7rem; line-height: 1.5; color: #ccc; }
+        
+        .btn-back { display: inline-block; margin-top: 20px; color: var(--neon-blue); text-decoration: none; border: 1px solid var(--neon-blue); padding: 8px 15px; font-size: 0.6rem; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 style="font-size: 1rem;">[DIVISION: QUANTUM_PHYSICS]</h1>
+        <p style="font-size: 0.6rem; color: #666;">SUBJECT: AZUL_STORY.DB // ARCHIVE_03</p>
+    </div>
+
+    <div id="data-feed" class="data-stream">Initializing Cryptographic Uplink...</div>
+
+    <canvas id="whiskerCanvas"></canvas>
+
+    <div class="report-box">
+        <h2>REPORT_03: WHISKER-BASED CRYPTOGRAPHY</h2>
+        <p><strong>ANALYSIS:</strong> Experimental evidence confirms feline vibrissae (whiskers) act as sub-atomic sensors. By mapping the specific patterns of Azul's whisker array, we have generated an unbreakable 4096-bit encryption key.</p>
+        <p style="margin-top:10px;"><strong>STATUS:</strong> Unbreakable. Even the Red Dot Singularity cannot decrypt this frequency.</p>
+    </div>
+
+    <a href="index.html" class="btn-back">← RETURN_TO_MAINFRAME</a>
+
+    <script>
+        const canvas = document.getElementById('whiskerCanvas');
+        const ctx = canvas.getContext('2d');
+        const feed = document.getElementById('data-feed');
+
+        function drawWhiskers() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = '#00e5ff';
+            ctx.lineWidth = 1;
+            
+            for(let i = 0; i < 12; i++) {
+                ctx.beginPath();
+                ctx.moveTo(canvas.width/2, 125);
+                ctx.quadraticCurveTo(
+                    canvas.width/2 + (Math.random() * 200 - 100), 
+                    Math.random() * 250, 
+                    canvas.width, 
+                    Math.random() * 250
+                );
+                ctx.stroke();
+            }
+        }
+
+        setInterval(() => {
+            drawWhiskers();
+            const hex = Math.random().toString(16).substring(2, 10).toUpperCase();
+            feed.innerHTML = `VIBRISSAE_SYNC: ${hex}...<br>` + feed.innerHTML;
+        }, 500);
+    </script>
+</body>
+</html>
 
