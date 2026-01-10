@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mainframe_Zero :: Dr. Azul – Quantum Medical Division</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #05070a;
+      --panel: #0c1117;
+      --accent: #4ef2d2;
+      --warning: #ff4d4d;
+      --text: #cfd8dc;
+      --muted: #7a8b99;
+      --glitch: #8b5cf6;
+      --border: #1f2a36;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #0b1320, #020305 70%);
+      color: var(--text);
+      font-family: "Courier New", monospace;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 2rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, #0c1220, #05070a);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    header h2 {
+      margin: 0.5rem 0 0;
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
+    .status {
+      margin-top: 1rem;
+      display: inline-block;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--warning);
+      color: var(--warning);
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    section::before {
+      content: "MAINFRAME_ZERO";
+      position: absolute;
+      top: 0.4rem;
+      right: 0.8rem;
+      font-size: 0.6rem;
+      color: var(--muted);
+      opacity: 0.4;
+    }
+
+    h3 {
+      margin-top: 0;
+      color: var(--accent);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: #080d14;
+      border: 1px solid var(--border);
+      padding: 1rem;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .value {
+      font-size: 0.9rem;
+    }
+
+    .log {
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .log h4 {
+      margin: 0 0 0.5rem;
+      color: var(--glitch);
+      font-size: 1rem;
+    }
+
+    .log p {
+      margin: 0.3rem 0;
+    }
+
+    iframe {
+      margin-top: 1rem;
+      width: 100%;
+      height: 420px;
+      border: 1px solid var(--border);
+      background: #000;
+    }
+
+    footer {
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Dr. Azul — Quantum Medical Division</h1>
+  <h2>Hacker Cat · Quantum Physicist · Medical Doctor (Technically)</h2>
+  <div class="status">CREDENTIALS: DISPUTED</div>
+</header>
+
+<main>
+
+  <!-- IDENTITY & PHILOSOPHY -->
+  <section>
+    <h3>Medical Philosophy</h3>
+    <p>
+      <strong>Primary Treatment Protocol:</strong><br>
+      Neuro-chemical optimization through humor, chaos, and unexpected honesty.
+    </p>
+    <p>
+      Dr. Azul maintains that laughter initiates a measurable improvement in
+      neurological resilience, emotional regulation, and patient compliance
+      (whether intentional or not).
+    </p>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section>
+    <h3>Credentials Audit (Single Source of Truth)</h3>
+
+    <div class="grid">
+      <div class="card">
+        <div class="label">Credential Status</div>
+        <div class="value">Validated (Self-Certified)</div>
+      </div>
+      <div class="card">
+        <div class="label">Medical Education</div>
+        <div class="value">3.5 Years Completed</div>
+      </div>
+      <div class="card">
+        <div class="label">Additional Training</div>
+        <div class="value">Quantum Physics (Unquestioned)</div>
+      </div>
+      <div class="card">
+        <div class="label">Licensing Authority</div>
+        <div class="value">Pending Patient Approval</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section>
+    <h3>Practitioner Stats</h3>
+    <div class="grid">
+      <div class="card">
+        <div class="label">Intellect</div>
+        <div class="value">99</div>
+      </div>
+      <div class="card">
+        <div class="label">Hacking Skill</div>
+        <div class="value">Master</div>
+      </div>
+      <div class="card">
+        <div class="label">Bedside Manner</div>
+        <div class="value">Variable</div>
+      </div>
+      <div class="card">
+        <div class="label">Diplomacy</div>
+        <div class="value">15</div>
+      </div>
+      <div class="card">
+        <div class="label">Liability Risk</div>
+        <div class="value">Extreme</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDICAL LOGS -->
+  <section>
+    <h3>Medical Log Archive</h3>
+
+    <!-- LOG 001 -->
+    <div class="log">
+      <h4>Consultation #001 — Patient: Mochkil</h4>
+      <p><strong>Profile:</strong> Wild Card / Chef</p>
+      <p><strong>Symptoms:</strong> Acute abdominal discomfort</p>
+      <p><strong>Diagnosis:</strong> Gas</p>
+      <p><strong>Resolution:</strong> Natural ventilation</p>
+      <p><strong>Outcome:</strong> Patient survived. Doctor unimpressed.</p>
+
+      <iframe 
+        src="https://www.youtube.com/embed/L8FSez5hB3c"
+        title="Consultation #001: Patient Mochkil"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- LOG 042 -->
+    <div class="log">
+      <h4>Credentials Audit #042</h4>
+      <p><strong>Audit Authority:</strong> Patient</p>
+      <p><strong>Incident:</strong> Attempted escape after questioning legitimacy</p>
+      <p><strong>Defense Statement:</strong><br>
+        “3.5 years is more than enough when spacetime is relative.”
+      </p>
+      <p><strong>Audit Outcome:</strong> Inconclusive. Confidence unaffected.</p>
+
+      <iframe 
+        src="https://www.youtube.com/embed/H7vkumP740I"
+        title="Credentials Audit #042"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- BEDSIDE MANNER -->
+    <div class="log">
+      <h4>Clinical Demonstration — Bedside Manner</h4>
+      <p>
+        Official entry documenting neuro-chemical healing via humor.
+      </p>
+
+      <iframe 
+        src="https://www.youtube.com/embed/dtXbg9tBCZc"
+        title="Dr. Azul's Bedside Manner"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  Mainframe_Zero Medical Subsystem · Unauthorized Use Discouraged · Maximum Reality
+</footer>
+
+</body>
+</html>
