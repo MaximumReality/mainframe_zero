@@ -21,68 +21,59 @@
             text-align: center; 
         }
 
-        /* GREEN RAIN BACKGROUND */
         video#bgVideo {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.15;
-            z-index: -1;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.15; z-index: -1;
         }
 
         .glitch-code { 
-            font-size: 80px; 
-            font-weight: 900; 
+            font-size: 80px; font-weight: 900; 
             color: var(--neon-green);
             text-shadow: 0 0 15px var(--neon-green); 
             animation: flicker 0.2s infinite; 
         }
 
-        @keyframes flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.8; }
-            100% { opacity: 1; }
-        }
+        @keyframes flicker { 0% { opacity: 1; } 50% { opacity: 0.8; } 100% { opacity: 1; } }
 
         .alert-box { 
             border: 1px solid var(--neon-blue); 
-            padding: 25px; 
-            margin: 20px; 
+            padding: 25px; margin: 20px; 
             background: rgba(0, 0, 0, 0.85); 
             max-width: 450px;
             box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
         }
 
         .typing { 
-            display: inline-block;
-            overflow: hidden; 
-            white-space: nowrap; 
+            display: inline-block; overflow: hidden; white-space: nowrap; 
             border-right: .15em solid var(--neon-blue); 
             animation: typing 2.5s steps(30, end), blink-caret .75s step-end infinite; 
-            font-size: 14px;
-            color: var(--neon-blue);
-            margin-bottom: 10px;
+            font-size: 14px; color: var(--neon-blue); margin-bottom: 10px;
         }
 
         @keyframes typing { from { width: 0 } to { width: 100% } }
         @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--neon-blue); } }
 
+        /* The button starts hidden for Azul's patch time */
         .return-btn { 
             margin-top: 30px; 
             border: 1px solid var(--neon-green); 
             padding: 15px 30px; 
             color: var(--neon-green); 
             text-decoration: none; 
-            font-size: 12px; 
-            font-weight: 900; 
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 12px; font-weight: 900; 
+            text-transform: uppercase; letter-spacing: 2px;
             background: rgba(0, 255, 0, 0.05);
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.5s ease-in;
+            pointer-events: none; /* Can't click it yet */
         }
         
+        .return-btn.visible { 
+            opacity: 1; 
+            pointer-events: auto; /* Clickable now! */
+        }
+
         .return-btn:active { background: var(--neon-green); color: #000; }
     </style>
 </head>
@@ -95,24 +86,30 @@
     <div class="glitch-code">404</div>
     
     <div class="alert-box">
-    <p style="color: var(--neon-blue); font-size: 10px; margin-bottom: 5px;">[ AZUL_LOG: KERNEL_PRIORITY_1 ]</p>
-    
-    <div class="typing">"Chill, meat operator... I'm patching it."</div>
-    
-    <p style="font-size: 12px; margin-top: 15px; line-height: 1.6; color: #aaa;">
-        Mochkil chewed through the data-cables (it tasted like spicy spaghetti). 
-        <br>
-        <span style="color: var(--neon-green);">Azul is currently re-compiling this reality.</span>
-    </p>
+        <p style="color: var(--neon-blue); font-size: 10px; margin-bottom: 5px;">[ AZUL_LOG: KERNEL_PRIORITY_1 ]</p>
+        <div class="typing">"Chill, meat operator... I'm patching it."</div>
+        
+        <p style="font-size: 12px; margin-top: 15px; line-height: 1.6; color: #aaa;">
+            Mochkil chewed through the data-cables (it tasted like spicy spaghetti). 
+            <br>
+            <span style="color: var(--neon-green);">Azul is currently re-compiling this reality.</span>
+        </p>
 
-    <p style="font-size: 9px; color: #555; margin-top: 15px; font-style: italic;">
-        [ERR_404]: Packet loss detected in sector iPhone_14_Pro_Max
-    </p>
-</div>
-
+        <p style="font-size: 9px; color: #555; margin-top: 15px; font-style: italic;">
+            [ERR_404]: Packet loss detected in sector iPhone_14_Pro_Max
+        </p>
     </div>
 
-    <a href="index.html" class="return-btn">> REBOOT_SYSTEM</a>
+    <a href="index.html" id="rebootBtn" class="return-btn">> REBOOT_SYSTEM</a>
+
+    <script>
+        // Azul's 3-nanotech (3000ms) delay
+        setTimeout(() => {
+            const btn = document.getElementById('rebootBtn');
+            btn.classList.add('visible');
+            console.log("Kernel Patched. You may proceed, Meat Operator.");
+        }, 3000);
+    </script>
 
 </body>
 </html>
